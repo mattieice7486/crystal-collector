@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crystal Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <style>
+        body {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 300;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(Crystal_Caves.jpg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 100vh;
+        }
+        img {
+            transition: transform .3s;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .row {
+            padding-top: 25px;
+        }
+        #target-score {
+            font-size: 40px;
+        }
+        #current-score {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>CrystalsCollector!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                You will be given a random number at the start of the game.
+                <br>
+                There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
+                <br>
+                You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.
+                <br>
+                The value of each crystal is hidden from you until you click on it.
+                <br>
+                Each time when the game starts, the game will change the values of each crystal.
+                <br>
+                <button class="btn-new">New game</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <span id="target-score">39</span>
+            </div>
+            <div class="col-md-2">
+                Wins: <span id="wins"></span>
+                <br>
+                Losses: <span id="losses"></span>
+            </div>
+        </div>
+        <div class="row" id="crystal-row">
+            <img src="1-Star_Crystal.png" id="crystal1" alt="crystal1" width=100px height=100px>
+            <img src="2-Star_Crystal.png" id="crystal2" alt="crystal2" width=100px height=100px>
+            <img src="3-Star_Crystal.png" id="crystal3" alt="crystal3" width=100px height=100px>
+            <img src="4-Star_Crystal.png" id="crystal4" alt="crystal4" width=100px height=100px>
+        </div>
+        <div class="row">
+            <div class ="col-md-3">
+                <h4>Your total score is:</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <span id="current-score">0</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    var currentScore = 0;
+    var wins = 0;
+    var losses = 0;
+    var crystalScores = [0,0,0,0];
+
+    $("#crystal-row").on("click", "#crystal1", function() {
+        currentScore += crystalScores[0];
+        $("#current-score").text(currentScore);
+        if (currentScore == number) {
+            wins++;
+            $("#wins").text(wins);
+            init();
+        } else if (currentScore > number) {
+            losses++;
+            $("#losses").text(losses);
+            init();
+        };
+    });
+    $("#crystal-row").on("click", "#crystal2", function() {
+        currentScore += crystalScores[1];
+        $("#current-score").text(currentScore);
+        if (currentScore == number) {
+            wins++;
+            $("#wins").text(wins);
+            init();
+        } else if (currentScore > number) {
+            losses++;
+            $("#losses").text(losses);
+            init();
+        };
+    });
+    $("#crystal-row").on("click", "#crystal3", function() {
+        currentScore += crystalScores[2];
+        $("#current-score").text(currentScore);
+        if (currentScore == number) {
+            wins++;
+            $("#wins").text(wins);
+            init();
+        } else if (currentScore > number) {
+            losses++;
+            $("#losses").text(losses);
+            init();
+        };
+    });
+    $("#crystal-row").on("click", "#crystal4", function() {
+        currentScore += crystalScores[3];
+        $("#current-score").text(currentScore);
+        if (currentScore == number) {
+            wins++;
+            $("#wins").text(wins);
+            init();
+        } else if (currentScore > number) {
+            losses++;
+            $("#losses").text(losses);
+            init();
+        };
+    });
+
+     var number = Math.floor(Math.random() * 100) + 1;
+
+
+    $(".btn-new").on('click', function() {
+        init();
+        $("#target-score").text(number);
+        losses = 0;
+        wins = 0;
+        $("#wins").text(wins);
+        $("#losses").text(losses);
+    });
+
+    function init() {
+        number = Math.floor(Math.random() * 100) + 1;
+        currentScore = 0;
+        $("#target-score").text(number);
+        $("#current-score").text(currentScore);
+        for (i = 0; i < crystalScores.length; i++) {
+            crystalScores[0] = Math.floor(Math.random() * 10) + 1;
+            crystalScores[1] = Math.floor(Math.random() * 10) + 1;
+            crystalScores[2] = Math.floor(Math.random() * 10) + 1;
+            crystalScores[3] = Math.floor(Math.random() * 10) + 1;
+        };
+    }
+    </script>
+</body>
+</html>
