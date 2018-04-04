@@ -163,15 +163,15 @@
     });
 
     function init() {
-        number = Math.floor(Math.random() * 100) + 1;
+        number = Math.floor(Math.random() * 90) + 10;
         currentScore = 0;
         $("#target-score").text(number);
         $("#current-score").text(currentScore);
         for (i = 0; i < crystalScores.length; i++) {
-            crystalScores[0] = Math.floor(Math.random() * 10) + 1;
-            crystalScores[1] = Math.floor(Math.random() * 10) + 1;
-            crystalScores[2] = Math.floor(Math.random() * 10) + 1;
-            crystalScores[3] = Math.floor(Math.random() * 10) + 1;
+            crystalScores[0] = Math.floor(Math.random() * 9) + 2;
+            crystalScores[1] = Math.floor(Math.random() * 9) + 2;
+            crystalScores[2] = Math.floor(Math.random() * 9) + 2;
+            crystalScores[3] = Math.floor(Math.random() * 9) + 2;
         };
     }
     </script>
